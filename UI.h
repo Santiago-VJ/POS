@@ -1,23 +1,7 @@
-//section of portability for Windows or linux/Mac
-#ifdef _WIN32
-    #include <windows.h>
-    void activateUI() {
-        //set console mode to enable ANSI escape codes
-        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-        if (hOut == INVALID_HANDLE_VALUE) return;
-        DWORD dwMode = 0;
-        if (!GetConsoleMode(hOut, &dwMode)) return;
-        dwMode |= 0x0004;
-        SetConsoleMode(hOut, dwMode);
-        // Set UTF-8 encoding for output
-        SetConsoleOutputCP(CP_UTF8);
-    }
-#else
-    // For Linux and Mac, ANSI escape codes work by default
-    void activateUI() {
-    }
-#endif
 
+#ifndef UI_H
+#define UI_H
+void activateUI();
 // definition of colors
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
@@ -38,3 +22,4 @@
 #define BLUEBG      "\033[44m"       /* Blue Background */
 //definition of clear screen
 #define CLEAR  "\033[2J\033[1;1H"      /* Clear the screen and move cursor to top-left */
+#endif
