@@ -1,14 +1,14 @@
 #include <iostream>
-#include <vector>
 #include "UI.h"
 #include "createClient.h"
+#include "saveDate.h"
+#include "loadDate.h"
 using namespace std;
 int main()
 {
+    vector<date> clients;
+
     activateUI(); 
-    int opcion;
-    vector<date> personas;
-    //cover of proyect
     cout <<"╔══════════════════════════════════════════╗"<<endl;
     cout <<"║        "<<BLUE<<" BIENVENIDOS AL SITEMA POS        "<<RESET<<"║"<<endl;
     cout <<"║      DE:SANTIAGO VELASQUEZ JIMENEZ  Y    ║"<<endl;
@@ -16,11 +16,15 @@ int main()
     cout <<"╚══════════════════════════════════════════╝"<<endl<<endl;
     cin.get();
     cout<<CLEAR;
+
+    int opcion;
     while(true)
     {
     cout <<"╔══════════════════════════════════════════╗"<<endl;
     cout <<"║ "<<BLUE"  INGRESE LA OPCION QUE DESEA REALIZAR "<<RESET"  ║"<<endl;
-    cout <<"║     1.    Crear cliente                  ║"<<endl;
+    cout <<"║     1.  Registrar nuevo cliente          ║"<<endl;
+    cout <<"║     2.  Guardar base de datos            ║"<<endl;
+    cout <<"║     3.  Cargar base de datos             ║"<<endl;
     cout <<"╚══════════════════════════════════════════╝"<<endl;
         if (!(cin >> opcion)) {
             cout<<CLEAR;
@@ -34,8 +38,14 @@ int main()
             switch (opcion)
          {
             case 1:
-                createClients(personas);
+                createClients(clients);
                 break;  
+            case 2:
+                saveDate(clients);
+                break;
+            case 3:
+                loadDate(clients);
+                break;
             default:
                 cout <<BOLD<<RED<<"Opcion no reconocida. Intente de nuevo.\n"<<RESET;
                 break;
