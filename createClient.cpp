@@ -4,12 +4,12 @@
 using namespace std;
 
 void date::askName() {
-    cout << "Nombre: ";
+    cout << "Nombre(s): ";
     getline(cin, name);
 
     while (name.empty()) {
         cout << RED << "ERROR: Nombre no ingresado." << RESET <<endl;
-        cout << "Nombre: ";
+        cout << "Nombre(s): ";
         getline(cin, name);
     }
 }
@@ -72,6 +72,7 @@ void date::askEmail() {
     }
 }
 void date::askAddress() {
+    cin.ignore(1000, '\n');
     cout << "Direccion: ";
     getline(cin, address);
     while (address.empty()) {
@@ -118,7 +119,6 @@ void createClients(vector<date> &clients) {
         do{
             cout << "¿Desea guardar este cliente? \n 1. Si \n 2. No \n 3. volver a ingresar datos \n";
             int confirmSave;
-            cin >> confirmSave;
             if (!(cin >> confirmSave)) { 
                     cout << RED << "ERROR: Ingrese un numero valido." << RESET << endl;
                     cin.clear();
