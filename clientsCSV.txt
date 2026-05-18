@@ -1,2 +1,4 @@
+comsumidor,final,22222222,17,3222222222,ejemplo@gmail.com,ip
 Santiago,Velasquez Jimenez,1088258779,19,3142353240,saantiagovj@gmail.com,Mirador de la estancia
 Luisa Fernanda,Jimenez Martinez,1088269261,36,3105747010,luisita.martines14@gmail.com,Mirador de la estancia
+samara,hernandez,1089381305,20,3108075285,samara@gmail.com,samaria 1 

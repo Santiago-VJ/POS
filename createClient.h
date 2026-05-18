@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 //dates necesary for the client
-struct date
+struct data
 {
     std::string name;     
     std::string lastName;   
@@ -23,5 +23,5 @@ struct date
     void askAddress();
     void sumaryDate();
 };
-void createClients(std::vector<date> &clients);
+void createClients(std::vector<data> &clients);
 #endif

@@ -2,7 +2,7 @@
 #define CREATEPRODUCT_H
 #include <vector>
 #include <string>
-struct dateProduct
+struct dataProduct
 {
     std::string name;  
     std::string description;   
@@ -17,5 +17,5 @@ struct dateProduct
     void askStock();
     void sumaryProducto();
 };
-void createProduct(std::vector<dateProduct> &products);
+void createProduct(std::vector<dataProduct> &products);
 #endif

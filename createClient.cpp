@@ -1,110 +1,109 @@
 #include <iostream>
 #include "createClient.h"
 #include "UI.h"
-using namespace std;
 
-void date::askName() {
-    cout << "Nombre(s): ";
-    getline(cin, name);
+
+void data::askName() {
+    std::cout << "Nombre(s): ";
+    std::getline(std::cin, name);
 
     while (name.empty()) {
-        cout << RED << "ERROR: Nombre no ingresado." << RESET <<endl;
-        cout << "Nombre(s): ";
-        getline(cin, name);
+        std::cout << RED << "ERROR: Nombre no ingresado." << RESET <<std::endl;
+        std::cout << "Nombre(s): ";
+        std::getline(std::cin, name);
     }
 }
-void date::askLastName() {
-    cout << "Apellido(s): ";
-    getline(cin, lastName);
+void data::askLastName() {
+    std::cout << "Apellido(s): ";
+    std::getline(std::cin, lastName);
     while (lastName.empty()) {
-        cout << RED << "ERROR: Apellido no ingresado." << RESET <<endl;
-        cout << "Apellido(s): ";
-        getline(cin, lastName);
+        std::cout << RED << "ERROR: Apellido no ingresado." << RESET <<std::endl;
+        std::cout << "Apellido(s): ";
+        std::getline(std::cin, lastName);
     }
 }
-void date::askID() {
+void data::askID() {
     while (true) {
-        cout << "ID: ";
-        if (!(cin >> id)) {
-            cout << RED << "ERROR: El ID no puede contener letras." << RESET <<endl;
-            cin.clear();
-            cin.ignore(1000, '\n');
+        std::cout << "ID: ";
+        if (!(std::cin >> id)) {
+            std::cout << RED << "ERROR: El ID no puede contener letras." << RESET <<std::endl;
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
         } else if (id <= 0) {
-            cout << RED << "ERROR: El ID debe ser un numero positivo." << RESET <<endl;
+            std::cout << RED << "ERROR: El ID debe ser un numero positivo." << RESET <<std::endl;
         } else {
             break;
         }
     }
 }
-void date::askAge() {
+void data::askAge() {
     while (true) {
-        cout << "Edad: ";
-        if (!(cin >> age) || age <= 0 || age > 200) {
-            cout << RED << "ERROR: Edad no valida." << RESET <<endl;
-            cin.clear();
-            cin.ignore(1000, '\n');
+        std::cout << "Edad: ";
+        if (!(std::cin >> age) || age <= 0 || age > 200) {
+            std::cout << RED << "ERROR: Edad no valida." << RESET <<std::endl;
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
         } else {
             break;
         }
     }
 }
-void date::askPhoneNumber() {
+void data::askPhoneNumber() {
     while (true) {
-        cout << "Número telefonico (10 digitos): ";
-        if (!(cin >> phoneNumber)) {
-            cout << RED << "ERROR: El telefono no puede contener letras." << RESET <<endl;
-            cin.clear();
-            cin.ignore(1000, '\n');
+        std::cout << "Número telefonico (10 digitos): ";
+        if (!(std::cin >> phoneNumber)) {
+            std::cout << RED << "ERROR: El telefono no puede contener letras." << RESET <<std::endl;
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
         } else if (phoneNumber < 1000000000LL || phoneNumber > 9999999999LL) {
-            cout << RED << "ERROR: El telefono debe tener exactamente 10 dígitos." << RESET <<endl;
+            std::cout << RED << "ERROR: El telefono debe tener exactamente 10 dígitos." << RESET <<std::endl;
         } else {
             break; 
         }
     }
 }
-void date::askEmail() {
-    cout << "Correo electronico: ";
-    cin>> email;
-    while (email.empty() || email.find('@') == string::npos || email.find('.') == string::npos) {
-        cout << RED << "ERROR: Correo electronico no válido." << RESET <<endl;
-        cout << "Correo electronico: ";
-        cin >> email;
+void data::askEmail() {
+    std::cout << "Correo electronico: ";
+    std::cin>> email;
+    while (email.empty() || email.find('@') == std::string::npos || email.find('.') == std::string::npos) {
+        std::cout << RED << "ERROR: Correo electronico no válido." << RESET <<std::endl;
+        std::cout << "Correo electronico: ";
+        std::cin >> email;
     }
 }
-void date::askAddress() {
-    cin.ignore(1000, '\n');
-    cout << "Direccion: ";
-    getline(cin, address);
+void data::askAddress() {
+    std::cin.ignore(1000, '\n');
+    std::cout << "Direccion: ";
+    std::getline(std::cin, address);
     while (address.empty()) {
-        cout << RED << "ERROR: Direccion no ingresada." << RESET <<endl;
-        cout << "Direccion: ";
-        getline(cin, address);
+        std::cout << RED << "ERROR: Direccion no ingresada." << RESET <<std::endl;
+        std::cout << "Direccion: ";
+        std::getline(std::cin, address);
     }
 }
-void date::sumaryDate() {
-    cout <<"╔═════════════════════════════════╗"<<endl;
-    cout <<"║  "<< GREEN <<"La informacion registrada es:  "<< RESET <<"║"<<endl;
-    cout <<"╚═════════════════════════════════╝"<<endl;
-    cout << "Nombre: " << name <<endl;
-    cout << "Apellido(s): " << lastName <<endl;
-    cout << "ID: " << id <<endl;
-    cout << "Edad: " << age <<endl;
-    cout << "Numero telefonico: " << phoneNumber <<endl;
-    cout << "Correo electronico: " << email <<endl;
-    cout << "Direccion: " << address <<endl;
+void data::sumaryDate() {
+    std::cout<<CLEAR;
+    std::cout <<"╔═════════════════════════════════╗"<<std::endl;
+    std::cout <<"║  "<< GREEN <<"La informacion registrada es:  "<< RESET <<"║"<<std::endl;
+    std::cout <<"╚═════════════════════════════════╝"<<std::endl;
+    std::cout << "Nombre: " << name <<std::endl;
+    std::cout << "Apellido(s): " << lastName <<std::endl;
+    std::cout << "ID: " << id <<std::endl;
+    std::cout << "Edad: " << age <<std::endl;
+    std::cout << "Numero telefonico: " << phoneNumber <<std::endl;
+    std::cout << "Correo electronico: " << email <<std::endl;
+    std::cout << "Direccion: " << address <<std::endl;
 }
 
-void createClients(vector<date> &clients) {
+void createClients(std::vector<data> &clients) {
     bool repeatEntry = false;
     do{
-        //clear bufer
-        cin.ignore(1000, '\n');
-
-        date newClient;
-
-        cout <<"╔══════════════════════════════════════════╗"<<endl;
-        cout <<"║   "<< BLUE <<"INGRESO DE DATOS PARA NUEVA PERSONA    "<< RESET <<"║"<<endl;
-        cout <<"╚══════════════════════════════════════════╝"<<endl;
+        std::cin.ignore(1000, '\n');
+        data newClient;
+        std::cout<<CLEAR;
+        std::cout <<"╔══════════════════════════════════════════╗"<<std::endl;
+        std::cout <<"║   "<< BLUE <<"INGRESO DE DATOS PARA NUEVA PERSONA    "<< RESET <<"║"<<std::endl;
+        std::cout <<"╚══════════════════════════════════════════╝"<<std::endl;
 
         newClient.askName();
         newClient.askLastName();
@@ -117,45 +116,45 @@ void createClients(vector<date> &clients) {
 
         bool validOption = false;
         do{
-            cout << "¿Desea guardar este cliente? \n 1. Si \n 2. No \n 3. volver a ingresar datos \n";
+            std::cout << "¿Desea guardar este cliente? \n 1. Si \n 2. No \n 3. volver a ingresar datos \n";
             int confirmSave;
-            if (!(cin >> confirmSave)) { 
-                    cout << RED << "ERROR: Ingrese un numero valido." << RESET << endl;
-                    cin.clear();
-                    cin.ignore(1000, '\n');
-                    cout<<CLEAR;
+            if (!(std::cin >> confirmSave)) { 
+                    std::cout << RED << "ERROR: Ingrese un numero valido." << RESET << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    std::cout<<CLEAR;
                     continue; 
                 }
             if (confirmSave == 1)  
             {
                 clients.push_back(newClient);
-                cout << GREEN << "Cliente guardado exitosamente." << RESET <<endl;
+                std::cout << GREEN << "Cliente guardado exitosamente." << RESET <<std::endl;
                 validOption = true;
             }
             else if (confirmSave == 2) {
-                cout << YELLOW << "Cliente no guardado." << RESET <<endl;
-                cout << "Presione Enter para continuar...";
-                cin.ignore(1000, '\n');
-                cin.get();
-                cout << CLEAR;
+                std::cout << YELLOW << "Cliente no guardado." << RESET <<std::endl;
+                std::cout << "Presione Enter para continuar...";
+                std::cin.ignore(1000, '\n');
+                std::cin.get();
+                std::cout << CLEAR;
                 validOption = true;
             }
             else if (confirmSave == 3) {
-                cout << YELLOW << "Reingresa los datos del cliente." << RESET <<endl;
-                cout << "Presione Enter para continuar...";
-                cin.ignore(1000, '\n');
-                cin.get();
-                cout << CLEAR;
+                std::cout << YELLOW << "Reingresa los datos del cliente." << RESET <<std::endl;
+                std::cout << "Presione Enter para continuar...";
+                std::cin.ignore(1000, '\n');
+                std::cin.get();
+                std::cout << CLEAR;
                 validOption = true;
                 repeatEntry = true;
             }
             else {
-                cout << RED << "Opción no válida. Cliente no guardado." << RESET <<endl;
-                cout << "Presione Enter para continuar...";
-                cin.ignore(1000, '\n');
+                std::cout << RED << "Opción no válida. Cliente no guardado." << RESET <<std::endl;
+                std::cout << "Presione Enter para continuar...";
+                std::cin.ignore(1000, '\n');
             }
-            cin.get();
-            cout << CLEAR;
+            std::cin.get();
+            std::cout << CLEAR;
 
         }while (!validOption);
         

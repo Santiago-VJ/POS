@@ -2,37 +2,38 @@
 #include "UI.h"
 #include "createClient.h"
 #include "createProduct.h"
-#include "saveDate.h"
-#include "loadDate.h"
-using namespace std;
+#include "saveData.h"
+#include "loadData.h"
+#include "controlCenter.h"
+#include "POS.h"
 int main()
 {
-    vector<date> clients;
-    vector<dateProduct> products;
-
+    std::vector<data> clients;
+    std::vector<dataProduct> products;
+    std::vector<sale> sales;
     activateUI(); 
-    cout <<"╔══════════════════════════════════════════╗"<<endl;
-    cout <<"║        "<<BLUE<<" BIENVENIDOS AL SITEMA POS        "<<RESET<<"║"<<endl;
-    cout <<"║      DE:SANTIAGO VELASQUEZ JIMENEZ       ║"<<endl;
-    cout <<"╚══════════════════════════════════════════╝"<<endl<<endl;
-    cin.get();
-    cout<<CLEAR;
+    loadData(clients, products, sales);
+    std::cout <<"╔══════════════════════════════════════════╗"<<std::endl;
+    std::cout <<"║        "<<BLUE<<" BIENVENIDOS AL SITEMA POS        "<<RESET<<"║"<<std::endl;
+    std::cout <<"║      DE:SANTIAGO VELASQUEZ JIMENEZ       ║"<<std::endl;
+    std::cout <<"╚══════════════════════════════════════════╝"<<std::endl<<std::endl;
+    std::cin.get();
+    std::cout<<CLEAR;
 
     int opcion;
-    while(true)
+    do
     {
-    cout <<"╔══════════════════════════════════════════╗"<<endl;
-    cout <<"║ "<<BLUE"  INGRESE LA OPCION QUE DESEA REALIZAR "<<RESET"  ║"<<endl;
-    cout <<"║     1.  Registrar nuevo cliente          ║"<<endl;
-    cout <<"║     2.  Registrar nuevo producto         ║"<<endl;
-    cout <<"║     3.  Guardar base de datos            ║"<<endl;
-    cout <<"║     4.  Cargar base de datos             ║"<<endl;
-    cout <<"╚══════════════════════════════════════════╝"<<endl;
-        if (!(cin >> opcion)) {
-            cout<<CLEAR;
-            cout <<BOLD<<RED<<"ERROR: Opcion no valida.\n"<<RESET;
-            cin.clear();
-            cin.ignore(1000 , '\n');
+    std::cout <<"╔══════════════════════════════════════════╗"<<std::endl;
+    std::cout <<"║ "<<BLUE"  INGRESE LA OPCION QUE DESEA REALIZAR "<<RESET"  ║"<<std::endl;
+    std::cout <<"║     1.  Centro de control                ║"<<std::endl;
+    std::cout <<"║     2.  POS                              ║"<<std::endl;
+    std::cout <<"║     0.  salir                            ║"<<std::endl;
+    std::cout <<"╚══════════════════════════════════════════╝"<<std::endl;
+        if (!(std::cin >> opcion)) {
+            std::cout<<CLEAR;
+            std::cout <<BOLD<<RED<<"ERROR: Opcion no valida.\n"<<RESET;
+            std::cin.clear();
+            std::cin.ignore(1000 , '\n');
             continue; 
         }
         else
@@ -40,23 +41,18 @@ int main()
             switch (opcion)
          {
             case 1:
-                createClients(clients);
+                controlCenter(clients, products, sales);
                 break;  
-            case 2:
-                createProduct(products);
-                break;
-            case 3:
-                saveDate(clients, products);
-                break;
-            case 4:
-                loadDate(clients, products);
+            case 2:  
+                pos(clients, products, sales);
                 break;
             default:
-                cout <<BOLD<<RED<<"Opcion no reconocida. Intente de nuevo.\n"<<RESET;
+                std::cout <<BOLD<<RED<<"Opcion no reconocida. Intente de nuevo.\n"<<RESET;
                 break;
          }
         }
         
-    }	
+    }while (opcion != 0);
+    saveData(clients, products, sales);	
 return 0;
 }
